@@ -175,6 +175,25 @@
     margin: 0;
   }
 
+  /* サブ導線：電話 */
+  .tfd-fv1__sub-contact {
+    font-size: 0.82rem;
+    color: var(--tfd-text-muted);
+    margin: 0 0 1.5rem 0;
+  }
+
+  .tfd-fv1__tel {
+    color: var(--tfd-main);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--tfd-accent);
+    margin-left: 4px;
+  }
+
+  .tfd-fv1__tel:hover {
+    color: var(--tfd-accent);
+  }
+
   /* スクロール誘導 */
   .tfd-fv1__scroll {
     display: flex;
@@ -260,7 +279,7 @@
         <span class="tfd-nav__tagline">ティーチ&amp;ファネルDesign</span>
       </div>
     </a>
-    <a href="#contact" class="tfd-nav__cta">無料相談</a>
+    <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-nav__cta">LINE相談</a>
   </nav>
 
   <!-- 背景画像: LCP最適化 -->
@@ -305,9 +324,15 @@
 
       <!-- CTA -->
       <div class="tfd-fv1__cta">
-        <a href="#contact" class="tfd-btn" aria-label="無料相談のお申し込みフォームへ移動する">まずは無料相談に申し込む</a>
-        <p class="tfd-fv1__cta-note">※ 相談は完全無料・営業なし</p>
+        <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-btn" aria-label="LINEで無料相談する">LINEで無料相談する</a>
+        <p class="tfd-fv1__cta-note">※ 24時間受付・相談は完全無料・営業なし</p>
       </div>
+
+      <!-- サブ導線：電話 -->
+      <p class="tfd-fv1__sub-contact">
+        <span>お電話でもお気軽に：</span>
+        <a href="tel:09025146064" class="tfd-fv1__tel">090-2514-6064</a>
+      </p>
 
       <!-- スクロール誘導 -->
       <div class="tfd-fv1__scroll" aria-hidden="true">
