@@ -1,28 +1,83 @@
 <!--
   =============================================
   [BLOCK-00] マスターCSS
-  ティーチ&ファネルDesign — 全ブロック共通のデザインシステム
-  ※ WordPressの最初のHTMLブロックに配置してください
+  ティーチ&ファネルDesign — 全ブロック共通デザインシステム
+  ※ WordPressの最初のカスタムHTMLブロックに貼り付けてください
   =============================================
 -->
+
+<!-- Google Fonts 最適化読み込み -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- 構造化データ: ProfessionalService（AEO/リッチリザルト対策） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "ティーチ&ファネルDesign",
+  "description": "HP・LP制作・セールスファネル構築を通じて「自動で売れる仕組み」を提供するWebデザイン会社。10年以上の実績。初期費用2万円から。",
+  "url": "https://810eigo.com",
+  "knowsAbout": [
+    "ホームページ制作",
+    "ランディングページ制作",
+    "セールスファネル構築",
+    "Webマーケティング",
+    "コンバージョン最適化",
+    "AI活用ライティング"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web制作サービス",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "基本HP/LPプラン",
+          "description": "売れる基本5セクション＋必須ページ。初期費用2万円から。"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "パートナープラン（月額サブスク）",
+          "description": "月額1,550円で修正無料＆セクション追加が半額。"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "上位版・自動化ファネル構築",
+          "description": "成約特化LP（7万円〜）やAI接客ボット付きLP（10万円〜）"
+        }
+      }
+    ]
+  }
+}
+</script>
+
 <style>
   /* =========================================
      グローバルデザイントークン (:root変数)
-     全10ブロックで共通利用
+     全ブロックで共通利用
      ========================================= */
   :root {
     /* カラーパレット */
     --tfd-bg: #FAFAFA;
     --tfd-bg-white: #FFFFFF;
+    --tfd-bg-dark: #1A2A3A;
     --tfd-main: #1A2A3A;
     --tfd-accent: #C5A059;
     --tfd-accent-hover: #b08d4f;
-    --tfd-accent-light: rgba(197, 160, 89, 0.1);
+    --tfd-accent-light: rgba(197, 160, 89, 0.08);
     --tfd-text: #333333;
     --tfd-text-light: #666666;
     --tfd-text-muted: #999999;
     --tfd-border: #E5E5E5;
-    --tfd-border-accent: var(--tfd-accent);
     --tfd-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
     --tfd-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
     --tfd-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
@@ -51,7 +106,7 @@
   }
 
   /* =========================================
-     グローバルリセット＆ベーススタイル
+     グローバルベーススタイル
      ========================================= */
   body {
     margin: 0;
@@ -69,6 +124,81 @@
     max-width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* =========================================
+     ナビゲーション（全ページ共通）
+     ========================================= */
+  .tfd-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 16px clamp(16px, 4vw, 40px);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tfd-nav__brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--tfd-main);
+  }
+
+  .tfd-nav__logo-text {
+    font-family: var(--tfd-font-serif);
+    font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: var(--tfd-main);
+  }
+
+  .tfd-nav__logo-accent {
+    color: var(--tfd-accent);
+  }
+
+  .tfd-nav__tagline {
+    display: block;
+    font-size: clamp(0.5rem, 0.8vw, 0.65rem);
+    font-weight: 400;
+    color: var(--tfd-text-light);
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  .tfd-nav__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: var(--tfd-font-serif);
+    color: var(--tfd-accent);
+    border: 1.5px solid var(--tfd-accent);
+    border-radius: var(--tfd-radius-lg);
+    text-decoration: none;
+    transition: all var(--tfd-transition);
+    letter-spacing: 0.05em;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .tfd-nav__cta:hover,
+  .tfd-nav__cta:focus-visible {
+    background: var(--tfd-accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .tfd-nav__cta:focus-visible {
+    outline: 3px solid var(--tfd-main);
+    outline-offset: 2px;
   }
 
   /* =========================================
@@ -124,7 +254,7 @@
     line-height: 1.6;
   }
 
-  /* --- ゴールドアクセント下線 --- */
+  /* ゴールドアクセント下線 */
   .tfd-heading__ja::after {
     content: '';
     display: block;
@@ -194,12 +324,16 @@
     transform: translateX(4px);
   }
 
-  /* ボタン：アウトラインバリアント */
   .tfd-btn--outline {
     background: transparent;
     color: var(--tfd-accent);
     border: 2px solid var(--tfd-accent);
     box-shadow: none;
+    padding-right: 40px;
+  }
+
+  .tfd-btn--outline::after {
+    display: none;
   }
 
   .tfd-btn--outline:hover,
@@ -223,8 +357,8 @@
     transform: translateY(-4px);
   }
 
-  /* --- テキストアクセント --- */
-  .tfd-accent {
+  /* --- テキストユーティリティ --- */
+  .tfd-accent-text {
     color: var(--tfd-accent);
   }
 
@@ -233,7 +367,6 @@
     color: var(--tfd-main);
   }
 
-  /* --- 区切り線 --- */
   .tfd-divider {
     border: none;
     height: 1px;
@@ -241,9 +374,6 @@
     margin: 0;
   }
 
-  /* =========================================
-     ユーティリティ
-     ========================================= */
   .u-inline-block {
     display: inline-block;
   }
@@ -267,14 +397,8 @@
      アニメーション共通
      ========================================= */
   @keyframes tfdFadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes tfdFadeIn {
@@ -282,13 +406,30 @@
     to { opacity: 1; }
   }
 
+  @keyframes tfdBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
   /* =========================================
-     レスポンシブ共通ブレイクポイント
+     レスポンシブ共通
      Mobile: ~767px / Tablet: 768~1023px / PC: 1024px~
      ========================================= */
   @media (max-width: 767px) {
     .u-hide-sp {
       display: none !important;
+    }
+
+    .tfd-nav__cta {
+      padding: 6px 14px;
+      font-size: 0.72rem;
+    }
+
+    .tfd-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 14px 48px 14px 24px;
+      font-size: 0.95rem;
     }
   }
 
