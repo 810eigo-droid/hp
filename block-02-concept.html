@@ -1,0 +1,296 @@
+<!--
+  =============================================
+  [BLOCK-02] コンセプトセクション
+  ティーチ&ファネルDesign
+  ※ テキスト構成【２】【３】に対応
+  =============================================
+-->
+
+<style>
+  /* =========================================
+     [BLOCK-02] コンセプトセクション専用CSS
+     ========================================= */
+
+  .tfd-concept {
+    position: relative;
+    padding: var(--tfd-section-py) var(--tfd-section-px);
+    background-color: var(--tfd-bg-white);
+    overflow: hidden;
+  }
+
+  /* 装飾：左上と右下の薄いゴールドグラデーション */
+  .tfd-concept::before,
+  .tfd-concept::after {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .tfd-concept::before {
+    top: -80px;
+    left: -80px;
+  }
+
+  .tfd-concept::after {
+    bottom: -80px;
+    right: -80px;
+  }
+
+  .tfd-concept__inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--tfd-content-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: clamp(32px, 5vw, 60px);
+  }
+
+  /* --- 左：テキスト列 --- */
+  .tfd-concept__text {
+    flex: 1.2;
+    min-width: 0;
+  }
+
+  /* --- 右：画像列 --- */
+  .tfd-concept__media {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tfd-concept__img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--tfd-radius-md);
+    box-shadow: var(--tfd-shadow-md);
+  }
+
+  /* --- 見出し --- */
+  .tfd-concept__title {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--tfd-main);
+    line-height: 1.45;
+    margin: 0 0 24px 0;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .tfd-concept__title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 3px;
+    background: var(--tfd-accent);
+    border-radius: 2px;
+  }
+
+  /* マーカー下線アニメーション */
+  .tfd-marker {
+    background-image: linear-gradient(transparent 60%, rgba(197, 160, 89, 0.25) 60%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s;
+    font-weight: 700;
+    padding: 0 2px;
+  }
+
+  .tfd-marker--delay {
+    transition-delay: 0.8s;
+  }
+
+  .tfd-concept.is-visible .tfd-marker {
+    background-size: 100% 100%;
+  }
+
+  /* --- リード文 --- */
+  .tfd-concept__lead {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-weight: 600;
+    color: var(--tfd-main);
+    line-height: 1.9;
+    margin: 0 0 28px 0;
+  }
+
+  /* --- ポイントボックス --- */
+  .tfd-concept__points {
+    background: var(--tfd-bg);
+    border: 1px solid var(--tfd-border);
+    border-radius: var(--tfd-radius-md);
+    padding: clamp(20px, 3vw, 32px);
+  }
+
+  .tfd-concept__points-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tfd-concept__points-list li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 20px;
+    font-size: clamp(0.92rem, 1.1vw, 1rem);
+    line-height: 1.8;
+    color: var(--tfd-text);
+  }
+
+  .tfd-concept__points-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .tfd-concept__points-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--tfd-accent);
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: var(--tfd-font-sans);
+    speak: never;
+  }
+
+  .tfd-concept__point-title {
+    display: block;
+    color: var(--tfd-main);
+    font-weight: 700;
+    font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+    margin-bottom: 4px;
+  }
+
+  .tfd-concept__point-hl {
+    color: var(--tfd-main);
+    font-weight: 700;
+    border-bottom: 2px dotted var(--tfd-accent);
+  }
+
+  /* --- 拡張機能タグ --- */
+  .tfd-concept__tags {
+    list-style: none;
+    margin: 20px 0 0 0;
+    padding: 16px 0 0 0;
+    border-top: 1px solid var(--tfd-border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tfd-concept__tag {
+    font-size: 0.8rem;
+    background: var(--tfd-bg-white);
+    color: var(--tfd-text-light);
+    padding: 3px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--tfd-border);
+    font-family: var(--tfd-font-sans);
+    font-weight: 600;
+  }
+
+  /* =========================================
+     レスポンシブ
+     ========================================= */
+  @media (max-width: 767px) {
+    .tfd-concept__inner {
+      flex-direction: column;
+    }
+
+    .tfd-concept__title {
+      text-align: center;
+    }
+
+    .tfd-concept__title::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .tfd-concept__lead {
+      text-align: center;
+    }
+
+    /* 画像を上に表示 */
+    .tfd-concept__media {
+      order: -1;
+    }
+  }
+</style>
+
+<section class="tfd-concept" id="concept" aria-labelledby="concept-heading">
+
+  <div class="tfd-concept__inner">
+
+    <!-- 左側：テキスト -->
+    <div class="tfd-concept__text">
+
+      <h2 class="tfd-concept__title" id="concept-heading">
+        <span class="tfd-marker">「作って終わり」</span>の<br class="u-hide-sp" aria-hidden="true">HP・LP制作はやめませんか？
+      </h2>
+
+      <p class="tfd-concept__lead">
+        まずは<span class="tfd-marker tfd-marker--delay">低価格・スモールスタート</span>で、<br class="u-hide-sp" aria-hidden="true">
+        売上の伸びに合わせて「進化」し続ける仕組みを構築します。
+      </p>
+
+      <div class="tfd-concept__points">
+        <h3 class="u-sr-only">段階的拡張で実現する3つのメリット</h3>
+        <ul class="tfd-concept__points-list">
+          <li>
+            <strong class="tfd-concept__point-title">手軽にスタート、必要な時に拡張</strong>
+            WordPressやCanvaを活用し、まずは<span class="tfd-concept__point-hl">驚くほど安く</span>プロ品質のサイトを制作。事業が軌道に乗ったタイミングで、機能を自由に追加できます。
+          </li>
+          <li>
+            <strong class="tfd-concept__point-title">迷わせない「Yes/No診断チャート」</strong>
+            顧客が自分で答えを選び、最短ルートで注文へ辿り着ける診断機能を実装可能。接客の手間を減らし、<span class="tfd-concept__point-hl">成約までの心理的ハードル</span>を下げます。
+          </li>
+          <li>
+            <strong class="tfd-concept__point-title">24時間休まない「AIチャットボット」</strong>
+            あなたが寝ている間も、AIが顧客の疑問を即座に解決。疑問を放置させない<span class="tfd-concept__point-hl">「24時間自動接客」</span>が、深夜の離脱を劇的に防ぎます。
+          </li>
+        </ul>
+
+        <h3 class="u-sr-only">将来的に追加可能な拡張機能の一覧</h3>
+        <ul class="tfd-concept__tags" aria-label="将来的に追加可能な機能">
+          <li class="tfd-concept__tag">動画挿入</li>
+          <li class="tfd-concept__tag">ブログ投稿</li>
+          <li class="tfd-concept__tag">問合せフォーム</li>
+          <li class="tfd-concept__tag">自動配信メール</li>
+          <li class="tfd-concept__tag">LINE連携</li>
+          <li class="tfd-concept__tag">会員サイト・ECサイト</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 右側：画像 -->
+    <div class="tfd-concept__media">
+      <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taf2-2-3.webp"
+           alt="売れる導線を作るステップ：安価なスタートからAIチャットボット・診断チャートによる拡張まで"
+           class="tfd-concept__img"
+           width="800"
+           height="533"
+           loading="lazy"
+           decoding="async">
+    </div>
+
+  </div>
+</section>
+
+<!-- スクロールアニメーション（マーカー下線用） -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var targets = document.querySelectorAll('.tfd-concept');
+  if (!targets.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(function(el) { obs.observe(el); });
+});
+</script>
