@@ -1,0 +1,300 @@
+<!--
+  =============================================
+  [BLOCK-00] マスターCSS
+  ティーチ&ファネルDesign — 全ブロック共通のデザインシステム
+  ※ WordPressの最初のHTMLブロックに配置してください
+  =============================================
+-->
+<style>
+  /* =========================================
+     グローバルデザイントークン (:root変数)
+     全10ブロックで共通利用
+     ========================================= */
+  :root {
+    /* カラーパレット */
+    --tfd-bg: #FAFAFA;
+    --tfd-bg-white: #FFFFFF;
+    --tfd-main: #1A2A3A;
+    --tfd-accent: #C5A059;
+    --tfd-accent-hover: #b08d4f;
+    --tfd-accent-light: rgba(197, 160, 89, 0.1);
+    --tfd-text: #333333;
+    --tfd-text-light: #666666;
+    --tfd-text-muted: #999999;
+    --tfd-border: #E5E5E5;
+    --tfd-border-accent: var(--tfd-accent);
+    --tfd-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --tfd-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --tfd-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+    --tfd-shadow-accent: 0 10px 25px rgba(197, 160, 89, 0.4);
+    --tfd-shadow-accent-hover: 0 15px 30px rgba(197, 160, 89, 0.5);
+
+    /* タイポグラフィ */
+    --tfd-font-serif: 'Noto Serif JP', serif;
+    --tfd-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --tfd-line-height: 1.8;
+    --tfd-letter-spacing: 0.03em;
+
+    /* スペーシング */
+    --tfd-section-py: clamp(60px, 8vw, 100px);
+    --tfd-section-px: clamp(16px, 4vw, 40px);
+    --tfd-content-max: 1100px;
+    --tfd-wide-max: 1280px;
+
+    /* ボーダーラジウス */
+    --tfd-radius-sm: 6px;
+    --tfd-radius-md: 12px;
+    --tfd-radius-lg: 50px;
+
+    /* トランジション */
+    --tfd-transition: 0.3s ease;
+  }
+
+  /* =========================================
+     グローバルリセット＆ベーススタイル
+     ========================================= */
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--tfd-bg);
+    color: var(--tfd-text);
+    font-family: var(--tfd-font-serif);
+    line-height: var(--tfd-line-height);
+    letter-spacing: var(--tfd-letter-spacing);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* =========================================
+     共通コンポーネント
+     ========================================= */
+
+  /* --- セクション共通 --- */
+  .tfd-section {
+    padding: var(--tfd-section-py) var(--tfd-section-px);
+  }
+
+  .tfd-section__inner {
+    width: 100%;
+    max-width: var(--tfd-content-max);
+    margin: 0 auto;
+  }
+
+  .tfd-section__inner--wide {
+    max-width: var(--tfd-wide-max);
+  }
+
+  /* --- セクション見出し共通 --- */
+  .tfd-heading {
+    text-align: center;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+
+  .tfd-heading__en {
+    display: block;
+    font-family: var(--tfd-font-sans);
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    font-weight: 600;
+    color: var(--tfd-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .tfd-heading__ja {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--tfd-main);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .tfd-heading__sub {
+    display: block;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    font-weight: 400;
+    color: var(--tfd-text-light);
+    margin-top: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* --- ゴールドアクセント下線 --- */
+  .tfd-heading__ja::after {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: var(--tfd-accent);
+    margin: 16px auto 0;
+    border-radius: 2px;
+  }
+
+  .tfd-heading--left {
+    text-align: left;
+  }
+
+  .tfd-heading--left .tfd-heading__ja::after {
+    margin-left: 0;
+  }
+
+  /* --- CTAボタン共通 --- */
+  .tfd-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 40px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: var(--tfd-font-serif);
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--tfd-accent) 0%, #a8884b 100%);
+    border: none;
+    border-radius: var(--tfd-radius-lg);
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: var(--tfd-shadow-accent), inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+    transition: all var(--tfd-transition);
+    position: relative;
+    padding-right: 56px;
+    letter-spacing: 0.05em;
+  }
+
+  .tfd-btn::after {
+    content: '\2192';
+    position: absolute;
+    right: 24px;
+    font-family: var(--tfd-font-sans);
+    font-weight: bold;
+    font-size: 1.3rem;
+    transition: transform var(--tfd-transition);
+    speak: never;
+  }
+
+  .tfd-btn:hover,
+  .tfd-btn:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: var(--tfd-shadow-accent-hover), inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--tfd-accent-hover) 0%, #957841 100%);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .tfd-btn:focus-visible {
+    outline: 3px solid var(--tfd-main);
+    outline-offset: 2px;
+  }
+
+  .tfd-btn:hover::after {
+    transform: translateX(4px);
+  }
+
+  /* ボタン：アウトラインバリアント */
+  .tfd-btn--outline {
+    background: transparent;
+    color: var(--tfd-accent);
+    border: 2px solid var(--tfd-accent);
+    box-shadow: none;
+  }
+
+  .tfd-btn--outline:hover,
+  .tfd-btn--outline:focus-visible {
+    background: var(--tfd-accent);
+    color: #ffffff;
+    box-shadow: var(--tfd-shadow-accent);
+  }
+
+  /* --- カード共通 --- */
+  .tfd-card {
+    background: var(--tfd-bg-white);
+    border-radius: var(--tfd-radius-md);
+    box-shadow: var(--tfd-shadow-sm);
+    padding: clamp(24px, 3vw, 40px);
+    transition: box-shadow var(--tfd-transition), transform var(--tfd-transition);
+  }
+
+  .tfd-card:hover {
+    box-shadow: var(--tfd-shadow-md);
+    transform: translateY(-4px);
+  }
+
+  /* --- テキストアクセント --- */
+  .tfd-accent {
+    color: var(--tfd-accent);
+  }
+
+  .tfd-strong {
+    font-weight: 700;
+    color: var(--tfd-main);
+  }
+
+  /* --- 区切り線 --- */
+  .tfd-divider {
+    border: none;
+    height: 1px;
+    background: var(--tfd-border);
+    margin: 0;
+  }
+
+  /* =========================================
+     ユーティリティ
+     ========================================= */
+  .u-inline-block {
+    display: inline-block;
+  }
+
+  .u-text-center {
+    text-align: center;
+  }
+
+  .u-sr-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  /* =========================================
+     アニメーション共通
+     ========================================= */
+  @keyframes tfdFadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes tfdFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* =========================================
+     レスポンシブ共通ブレイクポイント
+     Mobile: ~767px / Tablet: 768~1023px / PC: 1024px~
+     ========================================= */
+  @media (max-width: 767px) {
+    .u-hide-sp {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .u-hide-pc {
+      display: none !important;
+    }
+  }
+</style>
