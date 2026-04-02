@@ -1,0 +1,289 @@
+<!--
+  =============================================
+  [BLOCK-03] 私たちが選ばれる理由セクション
+  ティーチ&ファネルDesign
+  =============================================
+-->
+
+<style>
+  /* =========================================
+     [BLOCK-03] 選ばれる理由セクション専用CSS
+     ========================================= */
+
+  .tfd-reason {
+    padding: var(--tfd-section-py) var(--tfd-section-px);
+    background-color: var(--tfd-bg-dark);
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  .tfd-reason__inner {
+    max-width: var(--tfd-content-max);
+    margin: 0 auto;
+  }
+
+  /* --- セクション見出し（ダークテーマ用） --- */
+  .tfd-reason__header {
+    text-align: center;
+    margin-bottom: clamp(40px, 6vw, 70px);
+  }
+
+  .tfd-reason__title {
+    font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+    color: #ffffff;
+    margin: 0;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .tfd-reason__title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 3px;
+    background: var(--tfd-accent);
+    border-radius: 2px;
+  }
+
+  /* --- カードグリッド --- */
+  .tfd-reason__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(24px, 3vw, 40px);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* --- 個別カード --- */
+  .tfd-reason__card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: var(--tfd-radius-md);
+    padding: clamp(28px, 3vw, 40px) clamp(20px, 2.5vw, 30px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform var(--tfd-transition), box-shadow var(--tfd-transition), border-color var(--tfd-transition);
+    opacity: 0;
+  }
+
+  .tfd-reason__card.is-visible:hover,
+  .tfd-reason__card.is-visible:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3), 0 0 16px rgba(197, 160, 89, 0.1);
+    border-color: var(--tfd-accent);
+  }
+
+  /* --- 画像（丸枠） --- */
+  .tfd-reason__img-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid rgba(197, 160, 89, 0.3);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: border-color var(--tfd-transition), transform var(--tfd-transition);
+  }
+
+  .tfd-reason__card.is-visible:hover .tfd-reason__img-wrap {
+    border-color: var(--tfd-accent);
+    transform: scale(1.05);
+  }
+
+  .tfd-reason__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+
+  /* --- テキスト --- */
+  .tfd-reason__text {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.8;
+    font-weight: 600;
+    margin: 0;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .tfd-reason__hl {
+    color: var(--tfd-accent);
+    font-weight: 700;
+  }
+
+  .tfd-reason__hl--lg {
+    color: var(--tfd-accent);
+    font-weight: 700;
+    font-size: 1.1em;
+  }
+
+  /* --- 出現アニメーション --- */
+  @keyframes tfdReasonFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .tfd-reason__card.is-visible {
+    animation: tfdReasonFadeIn 0.6s ease-out forwards;
+  }
+
+  .tfd-reason__card.tfd-delay-1 { animation-delay: 0.1s; }
+  .tfd-reason__card.tfd-delay-2 { animation-delay: 0.25s; }
+  .tfd-reason__card.tfd-delay-3 { animation-delay: 0.4s; }
+  .tfd-reason__card.tfd-delay-4 { animation-delay: 0.55s; }
+
+  /* =========================================
+     レスポンシブ
+     ========================================= */
+  @media (max-width: 767px) {
+    .tfd-reason__cards {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .tfd-reason__card {
+      padding: 24px 20px;
+    }
+
+    .tfd-reason__img-wrap {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 16px;
+    }
+
+    .tfd-reason__card.is-visible:hover,
+    .tfd-reason__card.is-visible:focus-within {
+      transform: translateY(-4px);
+    }
+
+    .tfd-reason__card.tfd-delay-1 { animation-delay: 0.05s; }
+    .tfd-reason__card.tfd-delay-2 { animation-delay: 0.15s; }
+    .tfd-reason__card.tfd-delay-3 { animation-delay: 0.25s; }
+    .tfd-reason__card.tfd-delay-4 { animation-delay: 0.35s; }
+  }
+
+  /* アクセシビリティ：モーション軽減 */
+  @media (prefers-reduced-motion: reduce) {
+    .tfd-reason__card {
+      transition: none;
+    }
+    .tfd-reason__card.is-visible {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .tfd-reason__card.is-visible:hover,
+    .tfd-reason__card.is-visible:focus-within {
+      transform: none;
+    }
+  }
+</style>
+
+<section class="tfd-reason" aria-labelledby="reason-heading">
+  <div class="tfd-reason__inner">
+
+    <div class="tfd-reason__header">
+      <h2 class="tfd-reason__title" id="reason-heading">私たちが選ばれる理由</h2>
+    </div>
+
+    <ul class="tfd-reason__cards">
+
+      <!-- 理由 1 -->
+      <li class="tfd-reason__card tfd-delay-1">
+        <div class="tfd-reason__img-wrap" aria-hidden="true">
+          <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taf3-1.webp"
+               alt="2万円からのスモールスタートをイメージしたアイコン"
+               class="tfd-reason__img"
+               width="140" height="140"
+               loading="lazy" decoding="async">
+        </div>
+        <p class="tfd-reason__text">
+          まずは<span class="tfd-reason__hl">2万円から</span>の<br aria-hidden="true">
+          <span class="tfd-reason__hl--lg">スモールスタート</span>が可能
+        </p>
+      </li>
+
+      <!-- 理由 2 -->
+      <li class="tfd-reason__card tfd-delay-2">
+        <div class="tfd-reason__img-wrap" aria-hidden="true">
+          <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taf3-2.webp"
+               alt="高機能オプションの追加をイメージしたアイコン"
+               class="tfd-reason__img"
+               width="140" height="140"
+               loading="lazy" decoding="async">
+        </div>
+        <p class="tfd-reason__text">
+          後から<span class="tfd-reason__hl--lg">「高機能オプション」</span>を<br aria-hidden="true">
+          自由自在＆低価格で追加可能
+        </p>
+      </li>
+
+      <!-- 理由 3 -->
+      <li class="tfd-reason__card tfd-delay-3">
+        <div class="tfd-reason__img-wrap" aria-hidden="true">
+          <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/tad3-3.webp"
+               alt="外注の一本化によるコスト削減をイメージしたアイコン"
+               class="tfd-reason__img"
+               width="140" height="140"
+               loading="lazy" decoding="async">
+        </div>
+        <p class="tfd-reason__text">
+          幅広い実務対応力で<br aria-hidden="true">
+          <span class="tfd-reason__hl--lg">「外注を一本化」</span>しコスト削減
+        </p>
+      </li>
+
+      <!-- 理由 4 -->
+      <li class="tfd-reason__card tfd-delay-4">
+        <div class="tfd-reason__img-wrap" aria-hidden="true">
+          <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/tad3-4.webp"
+               alt="スマホ音声入力をイメージしたアイコン"
+               class="tfd-reason__img"
+               width="140" height="140"
+               loading="lazy" decoding="async">
+        </div>
+        <p class="tfd-reason__text">
+          文章が苦手でも安心<br aria-hidden="true">
+          <span class="tfd-reason__hl--lg">「スマホ音声入力」</span>で十分です
+        </p>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<!-- スクロールアニメーション -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var cards = document.querySelectorAll('.tfd-reason__card');
+  if (!cards.length) return;
+  var obs = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+  cards.forEach(function(card) { obs.observe(card); });
+});
+</script>
