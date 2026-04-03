@@ -5,6 +5,43 @@
   =============================================
 -->
 
+<!-- 構造化データ: ItemList（選ばれる理由 — AEO/リッチリザルト対策） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "ティーチ&ファネルDesignが選ばれる理由",
+  "description": "HP・LP制作で選ばれる4つの理由。初期費用2万円からのスモールスタート、高機能オプション追加、外注一本化によるコスト削減、スマホ音声入力による手軽な原稿作成。",
+  "numberOfItems": 4,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "まずは2万円からのスモールスタートが可能",
+      "description": "初期費用を最小限に抑え、売上の成長に合わせて段階的にWebサイトを拡張できるHP・LP制作プランです。"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "後から高機能オプションを自由自在＆低価格で追加可能",
+      "description": "予約フォーム、LINE連携、AIチャットボットなど、ビジネスに必要な機能を必要な時に低コストで追加できます。"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "幅広い実務対応力で外注を一本化しコスト削減",
+      "description": "HP制作・LP制作・ライティング・マーケティングまで一社で完結。複数の外注先を管理する手間とコストを削減します。"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "文章が苦手でも安心スマホ音声入力で十分です",
+      "description": "スマホに話しかけるだけで原稿作成が可能。AIが文章を整えるため、ライティング経験ゼロでも高品質なWebコンテンツが完成します。"
+    }
+  ]
+}
+</script>
+
 <style>
   /* =========================================
      [BLOCK-03] 選ばれる理由セクション専用CSS
@@ -49,6 +86,16 @@
     height: 3px;
     background: var(--tfd-accent);
     border-radius: 2px;
+  }
+
+  /* --- セクション導入文 --- */
+  .tfd-reason__lead {
+    text-align: center;
+    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.8;
+    margin: -20px auto clamp(40px, 5vw, 60px);
+    max-width: 680px;
   }
 
   /* --- カードグリッド --- */
@@ -109,7 +156,27 @@
     display: block;
   }
 
-  /* --- テキスト --- */
+  /* --- カード見出し --- */
+  .tfd-reason__card-title {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.8;
+    font-weight: 600;
+    margin: 0 0 12px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    color: #ffffff;
+  }
+
+  /* --- カード説明文 --- */
+  .tfd-reason__card-desc {
+    font-size: clamp(0.85rem, 1.1vw, 0.92rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    font-weight: 400;
+  }
+
+  /* --- テキスト（後方互換） --- */
   .tfd-reason__text {
     font-size: clamp(1rem, 1.3vw, 1.15rem);
     line-height: 1.8;
@@ -201,69 +268,86 @@
 <section class="tfd-reason" aria-labelledby="reason-heading">
   <div class="tfd-reason__inner">
 
-    <div class="tfd-reason__header">
+    <header class="tfd-reason__header">
       <h2 class="tfd-reason__title" id="reason-heading">私たちが選ばれる理由</h2>
-    </div>
+    </header>
 
-    <ul class="tfd-reason__cards">
+    <p class="tfd-reason__lead">
+      HP制作・LP制作で<strong>低コスト・高品質・拡張自在</strong>を実現。<br aria-hidden="true">
+      多くのお客様に選ばれ続ける4つの理由をご紹介します。
+    </p>
 
-      <!-- 理由 1 -->
+    <ul class="tfd-reason__cards" role="list">
+
+      <!-- 理由 1: スモールスタート -->
       <li class="tfd-reason__card tfd-delay-1">
-        <div class="tfd-reason__img-wrap" aria-hidden="true">
+        <figure class="tfd-reason__img-wrap">
           <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taf3-1.webp"
-               alt="2万円からのスモールスタートをイメージしたアイコン"
+               alt="初期費用2万円からのHP制作スモールスタート"
                class="tfd-reason__img"
                width="140" height="140"
                loading="lazy" decoding="async">
-        </div>
-        <p class="tfd-reason__text">
+        </figure>
+        <h3 class="tfd-reason__card-title">
           まずは<span class="tfd-reason__hl">2万円から</span>の<br aria-hidden="true">
           <span class="tfd-reason__hl--lg">スモールスタート</span>が可能
+        </h3>
+        <p class="tfd-reason__card-desc">
+          初期費用を抑えてホームページ制作を開始。売上の成長に合わせて段階的にサイトを拡張できるため、リスクを最小限にWebマーケティングを始められます。
         </p>
       </li>
 
-      <!-- 理由 2 -->
+      <!-- 理由 2: 高機能オプション追加 -->
       <li class="tfd-reason__card tfd-delay-2">
-        <div class="tfd-reason__img-wrap" aria-hidden="true">
+        <figure class="tfd-reason__img-wrap">
           <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taf3-2.webp"
-               alt="高機能オプションの追加をイメージしたアイコン"
+               alt="予約フォームやLINE連携などの高機能オプション追加"
                class="tfd-reason__img"
                width="140" height="140"
                loading="lazy" decoding="async">
-        </div>
-        <p class="tfd-reason__text">
+        </figure>
+        <h3 class="tfd-reason__card-title">
           後から<span class="tfd-reason__hl--lg">「高機能オプション」</span>を<br aria-hidden="true">
           自由自在＆低価格で追加可能
+        </h3>
+        <p class="tfd-reason__card-desc">
+          予約フォーム、LINE連携、AIチャットボット、会員サイトなど、ビジネスの成長に必要な機能を必要な時に低コストで追加。セールスファネルの段階的な構築に最適です。
         </p>
       </li>
 
-      <!-- 理由 3 -->
+      <!-- 理由 3: 外注一本化 -->
       <li class="tfd-reason__card tfd-delay-3">
-        <div class="tfd-reason__img-wrap" aria-hidden="true">
+        <figure class="tfd-reason__img-wrap">
           <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/tad3-3.webp"
-               alt="外注の一本化によるコスト削減をイメージしたアイコン"
+               alt="HP制作からマーケティングまで外注を一本化"
                class="tfd-reason__img"
                width="140" height="140"
                loading="lazy" decoding="async">
-        </div>
-        <p class="tfd-reason__text">
+        </figure>
+        <h3 class="tfd-reason__card-title">
           幅広い実務対応力で<br aria-hidden="true">
           <span class="tfd-reason__hl--lg">「外注を一本化」</span>しコスト削減
+        </h3>
+        <p class="tfd-reason__card-desc">
+          HP制作・LP制作・コピーライティング・Webマーケティングまで一社で完結。複数の制作会社への外注を一本化することで、コミュニケーションコストと制作費を大幅に削減できます。
         </p>
       </li>
 
-      <!-- 理由 4 -->
+      <!-- 理由 4: スマホ音声入力 -->
       <li class="tfd-reason__card tfd-delay-4">
-        <div class="tfd-reason__img-wrap" aria-hidden="true">
+        <figure class="tfd-reason__img-wrap">
           <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/tad3-4.webp"
-               alt="スマホ音声入力をイメージしたアイコン"
+               alt="スマホ音声入力とAIで簡単に原稿作成"
                class="tfd-reason__img"
                width="140" height="140"
                loading="lazy" decoding="async">
-        </div>
-        <p class="tfd-reason__text">
+        </figure>
+        <h3 class="tfd-reason__card-title">
           文章が苦手でも安心<br aria-hidden="true">
           <span class="tfd-reason__hl--lg">「スマホ音声入力」</span>で十分です
+        </h3>
+        <p class="tfd-reason__card-desc">
+          スマホに話しかけるだけで原稿の土台が完成。最新AIが文章を自然に整えるため、ライティング経験がなくても高品質なWebコンテンツを作成できます。
         </p>
       </li>
 
