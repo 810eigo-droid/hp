@@ -112,49 +112,52 @@
 
   /* --- リード文 --- */
   .tfd-concept__lead {
-    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-size: clamp(1.05rem, 1.3vw, 1.15rem);
     font-weight: 600;
     color: var(--tfd-main);
-    line-height: 1.9;
-    margin: 0 0 28px 0;
+    line-height: 1.95;
+    margin: 0 0 32px 0;
   }
 
-  /* --- ポイントボックス --- */
+  /* --- ポイントカード群 --- */
   .tfd-concept__points {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tfd-concept__point-card {
     background: var(--tfd-bg);
     border: 1px solid var(--tfd-border);
     border-radius: var(--tfd-radius-md);
-    padding: clamp(20px, 3vw, 32px);
-  }
-
-  .tfd-concept__points-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .tfd-concept__points-list li {
+    padding: clamp(20px, 3vw, 28px);
+    padding-left: clamp(52px, 6vw, 64px);
     position: relative;
-    padding-left: 32px;
-    margin-bottom: 20px;
-    font-size: clamp(1rem, 1.3vw, 1.1rem);
-    line-height: 1.9;
-    color: var(--tfd-text);
+    transition: box-shadow var(--tfd-transition), transform var(--tfd-transition);
   }
 
-  .tfd-concept__points-list li:last-child {
-    margin-bottom: 0;
+  .tfd-concept__point-card:hover {
+    box-shadow: var(--tfd-shadow-md);
+    transform: translateY(-2px);
   }
 
-  .tfd-concept__points-list li::before {
+  .tfd-concept__point-card::before {
     content: '\2713';
     position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--tfd-accent);
-    font-size: 1.3rem;
+    left: clamp(16px, 2vw, 22px);
+    top: clamp(20px, 3vw, 28px);
+    color: var(--tfd-bg-white);
+    background: var(--tfd-accent);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
     font-weight: 700;
     font-family: var(--tfd-font-sans);
+    line-height: 1;
     speak: never;
   }
 
@@ -162,8 +165,16 @@
     display: block;
     color: var(--tfd-main);
     font-weight: 700;
-    font-size: clamp(1.05rem, 1.3vw, 1.15rem);
-    margin-bottom: 6px;
+    font-size: clamp(1.1rem, 1.4vw, 1.2rem);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .tfd-concept__point-desc {
+    font-size: clamp(1.02rem, 1.3vw, 1.1rem);
+    line-height: 1.95;
+    color: var(--tfd-text);
+    margin: 0;
   }
 
   .tfd-concept__point-hl {
@@ -176,19 +187,18 @@
   .tfd-concept__tags {
     list-style: none;
     margin: 20px 0 0 0;
-    padding: 16px 0 0 0;
-    border-top: 1px solid var(--tfd-border);
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
   }
 
   .tfd-concept__tag {
-    font-size: 0.85rem;
-    background: var(--tfd-bg-white);
+    font-size: 0.88rem;
+    background: var(--tfd-bg);
     color: var(--tfd-text-light);
-    padding: 3px 12px;
-    border-radius: 4px;
+    padding: 5px 14px;
+    border-radius: var(--tfd-radius-sm);
     border: 1px solid var(--tfd-border);
     font-family: var(--tfd-font-sans);
     font-weight: 600;
@@ -238,33 +248,35 @@
         売上の伸びに合わせて「進化」し続ける仕組みを構築します。
       </p>
 
+      <h3 class="u-sr-only">段階的拡張で実現する3つのメリット</h3>
       <div class="tfd-concept__points">
-        <h3 class="u-sr-only">段階的拡張で実現する3つのメリット</h3>
-        <ul class="tfd-concept__points-list">
-          <li>
-            <strong class="tfd-concept__point-title">手軽にスタート、必要な時に拡張</strong>
-            WordPressやCanvaを活用し、まずは<span class="tfd-concept__point-hl">驚くほど安く</span>プロ品質のサイトを制作。事業が軌道に乗ったタイミングで、機能を自由に追加できます。
-          </li>
-          <li>
-            <strong class="tfd-concept__point-title">迷わせない「Yes/No診断チャート」</strong>
-            顧客が自分で答えを選び、最短ルートで注文へ辿り着ける診断機能を実装可能。接客の手間を減らし、<span class="tfd-concept__point-hl">成約までの心理的ハードル</span>を下げます。
-          </li>
-          <li>
-            <strong class="tfd-concept__point-title">24時間休まない「AIチャットボット」</strong>
-            あなたが寝ている間も、AIが顧客の疑問を即座に解決。疑問を放置させない<span class="tfd-concept__point-hl">「24時間自動接客」</span>が、深夜の離脱を劇的に防ぎます。
-          </li>
-        </ul>
 
-        <h3 class="u-sr-only">将来的に追加可能な拡張機能の一覧</h3>
-        <ul class="tfd-concept__tags" aria-label="将来的に追加可能な機能">
-          <li class="tfd-concept__tag">動画挿入</li>
-          <li class="tfd-concept__tag">ブログ投稿</li>
-          <li class="tfd-concept__tag">問合せフォーム</li>
-          <li class="tfd-concept__tag">自動配信メール</li>
-          <li class="tfd-concept__tag">LINE連携</li>
-          <li class="tfd-concept__tag">会員サイト・ECサイト</li>
-        </ul>
+        <div class="tfd-concept__point-card">
+          <strong class="tfd-concept__point-title">手軽にスタート、必要な時に拡張</strong>
+          <p class="tfd-concept__point-desc">WordPressやCanvaを活用し、まずは<span class="tfd-concept__point-hl">驚くほど安く</span>プロ品質のサイトを制作。事業が軌道に乗ったタイミングで、機能を自由に追加できます。</p>
+        </div>
+
+        <div class="tfd-concept__point-card">
+          <strong class="tfd-concept__point-title">迷わせない「Yes/No診断チャート」</strong>
+          <p class="tfd-concept__point-desc">顧客が自分で答えを選び、最短ルートで注文へ辿り着ける診断機能を実装可能。接客の手間を減らし、<span class="tfd-concept__point-hl">成約までの心理的ハードル</span>を下げます。</p>
+        </div>
+
+        <div class="tfd-concept__point-card">
+          <strong class="tfd-concept__point-title">24時間休まない「AIチャットボット」</strong>
+          <p class="tfd-concept__point-desc">あなたが寝ている間も、AIが顧客の疑問を即座に解決。疑問を放置させない<span class="tfd-concept__point-hl">「24時間自動接客」</span>が、深夜の離脱を劇的に防ぎます。</p>
+        </div>
+
       </div>
+
+      <h3 class="u-sr-only">将来的に追加可能な拡張機能の一覧</h3>
+      <ul class="tfd-concept__tags" aria-label="将来的に追加可能な機能">
+        <li class="tfd-concept__tag">動画挿入</li>
+        <li class="tfd-concept__tag">ブログ投稿</li>
+        <li class="tfd-concept__tag">問合せフォーム</li>
+        <li class="tfd-concept__tag">自動配信メール</li>
+        <li class="tfd-concept__tag">LINE連携</li>
+        <li class="tfd-concept__tag">会員サイト・ECサイト</li>
+      </ul>
     </div>
 
     <!-- 右側：画像 -->
