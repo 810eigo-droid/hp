@@ -225,11 +225,15 @@
     display: none;
   }
 
+  /* =========================================
+     レスポンシブ: モバイル
+     ========================================= */
   @media (max-width: 767px) {
-    /* HTMLのFVを非表示 */
+    /* HTML版FVを完全に非表示 */
     .tfd-fv1 {
       display: none !important;
     }
+
     /* 画像FVを表示 */
     .tfd-fv1__sp-visual {
       display: block;
@@ -239,49 +243,6 @@
       width: 100%;
       height: auto;
       display: block;
-    }
-  }
-
-  /* =========================================
-     レスポンシブ: モバイル
-     ========================================= */
-  @media (max-width: 767px) {
-    .tfd-fv1 {
-      min-height: auto;
-    }
-
-    .tfd-fv1__bg::after {
-      background: linear-gradient(
-        to bottom,
-        rgba(250, 250, 250, 0.96) 0%,
-        rgba(250, 250, 250, 0.88) 55%,
-        rgba(250, 250, 250, 0.65) 100%
-      );
-    }
-
-    .tfd-fv1__bg img {
-      object-position: center center;
-    }
-
-    .tfd-fv1__inner {
-      padding: 72px var(--tfd-section-px) 40px;
-    }
-
-    .tfd-fv1__content {
-      max-width: 100%;
-    }
-
-    .tfd-fv1__pains li {
-      font-size: 0.88rem;
-      padding: 6px 12px;
-    }
-
-    .tfd-fv1__title {
-      font-size: clamp(1.4rem, 5.5vw, 1.8rem);
-    }
-
-    .tfd-fv1__title-em {
-      font-size: clamp(1.6rem, 7vw, 2.2rem);
     }
   }
 
