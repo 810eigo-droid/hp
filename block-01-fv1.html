@@ -219,6 +219,30 @@
   }
 
   /* =========================================
+     スマホ専用：画像FV
+     ========================================= */
+  .tfd-fv1__sp-visual {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    /* HTMLのFVを非表示 */
+    .tfd-fv1 {
+      display: none !important;
+    }
+    /* 画像FVを表示 */
+    .tfd-fv1__sp-visual {
+      display: block;
+      width: 100%;
+    }
+    .tfd-fv1__sp-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  /* =========================================
      レスポンシブ: モバイル
      ========================================= */
   @media (max-width: 767px) {
@@ -268,6 +292,16 @@
     }
   }
 </style>
+
+<!-- スマホ専用：画像FV（PCでは非表示） -->
+<div class="tfd-fv1__sp-visual">
+  <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2"
+       alt="ティーチ&ファネルDesign — 費用2万円から。小さく始めて、売上とともに大きく育てるWebサイト。"
+       width="1080"
+       height="1920"
+       fetchpriority="high"
+       decoding="sync">
+</div>
 
 <header class="tfd-fv1" aria-label="ティーチ&ファネルDesign メインビジュアル">
 
