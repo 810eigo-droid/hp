@@ -17,44 +17,12 @@
     width: 100%;
     min-height: 100vh;
     min-height: 100svh;
+    background-image: url('http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2');
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
     background-color: var(--tfd-bg);
     overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-
-  /* 背景画像 */
-  .tfd-fv1__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  .tfd-fv1__bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: right center;
-  }
-
-  /* 背景オーバーレイ: テキスト可読性の確保 */
-  .tfd-fv1__bg::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to right,
-      rgba(250, 250, 250, 0.95) 0%,
-      rgba(250, 250, 250, 0.82) 40%,
-      rgba(250, 250, 250, 0.3) 70%,
-      transparent 100%
-    );
   }
 
   /* コンテンツエリア */
@@ -64,78 +32,33 @@
     width: 100%;
     max-width: var(--tfd-wide-max);
     margin: 0 auto;
-    padding: 90px var(--tfd-section-px) 48px;
+    padding: 80px var(--tfd-section-px);
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .tfd-fv1__content {
     width: 100%;
-    max-width: 640px;
-    animation: tfdFadeInUp 1s 0.2s ease-out both;
+    max-width: 650px;
+    animation: tfdFadeInUp 1.2s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  /* 事業名バッジ */
-  .tfd-fv1__brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 5px 14px;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid var(--tfd-border);
-    border-radius: var(--tfd-radius-lg);
-    margin-bottom: 1.2rem;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-  }
-
-  .tfd-fv1__brand-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--tfd-accent);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .tfd-fv1__brand span:last-child {
-    font-size: clamp(0.85rem, 1.1vw, 0.9rem);
+  /* --- サブタイトル --- */
+  .tfd-fv1__sub {
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
     font-weight: 600;
-    color: var(--tfd-text-light);
-    letter-spacing: 0.05em;
-  }
-
-  /* お悩みリスト（吹き出し風） */
-  .tfd-fv1__pains {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.5rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .tfd-fv1__pains li {
-    display: inline-block;
-    font-size: clamp(1rem, 1.2vw, 1.05rem);
     color: var(--tfd-text);
-    font-weight: 500;
-    padding: 6px 14px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: var(--tfd-radius-sm);
-    border-left: 3px solid var(--tfd-accent);
-    line-height: 1.6;
-    width: fit-content;
-  }
-
-  /* メインコピー */
-  .tfd-fv1__catch {
-    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-    font-weight: 700;
-    color: var(--tfd-accent);
-    margin: 0 0 0.3rem 0;
+    margin: 0 0 0.5rem 0;
     letter-spacing: 0.05em;
   }
 
+  /* --- メインタイトル --- */
   .tfd-fv1__title {
-    font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
     font-weight: 700;
     color: var(--tfd-main);
     line-height: 1.4;
@@ -145,77 +68,59 @@
   }
 
   .tfd-fv1__title-em {
-    font-size: clamp(1.8rem, 3.8vw, 3.2rem);
     color: var(--tfd-accent);
-    display: block;
-    line-height: 1.3;
-    margin-top: 0.2rem;
   }
 
-  /* リード文 */
+  /* --- リード文 --- */
   .tfd-fv1__lead {
-    font-size: clamp(1rem, 1.2vw, 1.05rem);
-    color: var(--tfd-text);
-    margin: 0 0 2rem 0;
-    line-height: 1.9;
-  }
-
-  /* CTA + スクロール誘導 */
-  .tfd-fv1__cta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 2rem;
-  }
-
-  .tfd-fv1__cta-note {
-    font-size: 0.88rem;
-    color: var(--tfd-text-muted);
-    margin: 0;
-  }
-
-  /* サブ導線：電話 */
-  .tfd-fv1__sub-contact {
-    font-size: 0.88rem;
-    color: var(--tfd-text-muted);
-    margin: 0 0 1.5rem 0;
-  }
-
-  .tfd-fv1__tel {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 600;
     color: var(--tfd-main);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.7;
+  }
+
+  /* --- サービスリスト --- */
+  .tfd-fv1__list {
+    list-style: none;
+    padding: 1.5rem;
+    margin: 0 0 2.5rem 0;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: var(--tfd-radius-sm);
+    border-left: 4px solid var(--tfd-accent);
+    display: inline-block;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .tfd-fv1__list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.8rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
     font-weight: 700;
-    text-decoration: none;
-    border-bottom: 1px dotted var(--tfd-accent);
-    margin-left: 4px;
-  }
-
-  .tfd-fv1__tel:hover {
-    color: var(--tfd-accent);
-  }
-
-  /* スクロール誘導 */
-  .tfd-fv1__scroll {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: var(--tfd-text-muted);
+    color: var(--tfd-main);
     letter-spacing: 0.05em;
-    animation: tfdFadeIn 1s 1.2s ease-out both;
   }
 
-  .tfd-fv1__scroll-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border: 1.5px solid var(--tfd-text-muted);
-    border-radius: 50%;
-    font-size: 0.95rem;
-    animation: tfdBounce 2s infinite;
-    line-height: 1;
+  .tfd-fv1__list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .tfd-fv1__list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--tfd-accent);
+    font-size: 1.2rem;
+    font-family: var(--tfd-font-sans);
+    speak: never;
+  }
+
+  /* --- CTA --- */
+  .tfd-fv1__cta {
+    margin-top: 1rem;
   }
 
   /* =========================================
@@ -229,16 +134,15 @@
      レスポンシブ: モバイル
      ========================================= */
   @media (max-width: 767px) {
-    /* HTML版FVを完全に非表示 */
     .tfd-fv1 {
       display: none !important;
     }
 
-    /* 画像FVを表示 */
     .tfd-fv1__sp-visual {
       display: block;
       width: 100%;
     }
+
     .tfd-fv1__sp-visual img {
       width: 100%;
       height: auto;
@@ -255,9 +159,9 @@
 </style>
 
 <!-- スマホ専用：画像FV（PCでは非表示） -->
-<div class="tfd-fv1__sp-visual">
+<div class="tfd-fv1__sp-visual" role="img" aria-label="ティーチ&ファネルDesign — 初期費用2万円から、自動で売れるWebサイトを構築。ホームページ制作・LP制作・ファネル構築に対応。">
   <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2"
-       alt="ティーチ&ファネルDesign — 費用2万円から。小さく始めて、売上とともに大きく育てるWebサイト。"
+       alt="ティーチ&ファネルDesign — 初期費用2万円から「自動で売れる」Webサイト。HP制作・LP制作・ファネル構築。"
        width="1080"
        height="1920"
        fetchpriority="high"
@@ -277,62 +181,33 @@
     <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-nav__cta">LINE相談</a>
   </nav>
 
-  <!-- 背景画像: LCP最適化 -->
-  <div class="tfd-fv1__bg" aria-hidden="true">
-    <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2"
-         alt=""
-         width="1920"
-         height="1080"
-         fetchpriority="high"
-         decoding="sync">
-  </div>
-
   <div class="tfd-fv1__inner">
     <div class="tfd-fv1__content">
 
-      <!-- 事業名バッジ -->
-      <div class="tfd-fv1__brand">
-        <span class="tfd-fv1__brand-dot" aria-hidden="true"></span>
-        <span>ティーチ&amp;ファネルDesign</span>
-      </div>
+      <!-- サブタイトル -->
+      <p class="tfd-fv1__sub">初期費用2万円～。で作る</p>
 
-      <!-- お悩み（ターゲットの痛みに共感） -->
-      <ul class="tfd-fv1__pains" aria-label="こんなお悩みありませんか？">
-        <li>「そろそろホームページが古くなってきた…」</li>
-        <li>「LPを作り替えたいけど、予算が心配…」</li>
-        <li>「文章やキャッチコピーを考えるのが面倒…」</li>
-      </ul>
-
-      <!-- メインコピー -->
-      <p class="tfd-fv1__catch">もう悩まない。HP・LP制作の"正解"はここだ！</p>
-
+      <!-- メインコピー（h1: ページ最重要キーワードを含む） -->
       <h1 class="tfd-fv1__title">
-        費用2万円から。<br>
-        <span class="tfd-fv1__title-em">「小さく始めて、<br class="u-hide-pc">売上とともに<br class="u-hide-pc">大きく育てる」<span class="u-inline-block">Webサイト。</span></span>
+        <span class="tfd-fv1__title-em u-inline-block">「自動で売れる」</span><span class="u-inline-block">Webサイト。</span>
       </h1>
 
-      <!-- リード文 -->
+      <!-- リード文（SEOキーワード含有） -->
       <p class="tfd-fv1__lead">
-        最新AI活用の文章作成から、将来のファネル構築まで。<br>
-        あなたの事業成長に合わせて、自由自在に進化するWeb制作。
+        10年以上の実績から導き出した、確かな「売れる導線」設計。<br aria-hidden="true">
+        あなたの事業成長に合わせて、以下の仕組みが柔軟に進化します。
       </p>
+
+      <!-- サービス一覧（構造化＋視認性） -->
+      <ul class="tfd-fv1__list" aria-label="対応サービス一覧">
+        <li>ホームページ制作</li>
+        <li>ランディングページ制作</li>
+        <li>セールスファネル構築</li>
+      </ul>
 
       <!-- CTA -->
       <div class="tfd-fv1__cta">
-        <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-btn" aria-label="LINEで無料相談する">LINEで無料相談する</a>
-        <p class="tfd-fv1__cta-note">※ 24時間受付・相談は完全無料・営業なし</p>
-      </div>
-
-      <!-- サブ導線：電話 -->
-      <p class="tfd-fv1__sub-contact">
-        <span>お電話でもお気軽に：</span>
-        <a href="tel:09025146064" class="tfd-fv1__tel">090-2514-6064</a>
-      </p>
-
-      <!-- スクロール誘導 -->
-      <div class="tfd-fv1__scroll" aria-hidden="true">
-        <span class="tfd-fv1__scroll-icon">↓</span>
-        <span>スクロールして続きを見る</span>
+        <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-btn" aria-label="LINEで無料相談する">無料相談はこちら</a>
       </div>
 
     </div>
