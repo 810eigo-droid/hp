@@ -17,12 +17,18 @@
     width: 100%;
     min-height: 100vh;
     min-height: 100svh;
-    background-image: url('http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2');
-    background-size: cover;
-    background-position: right center;
-    background-repeat: no-repeat;
     background-color: var(--tfd-bg);
     overflow: hidden;
+  }
+
+  /* PC以上でのみ背景画像を適用（SP/タブレットでは読み込まない） */
+  @media (min-width: 768px) {
+    .tfd-fv1 {
+      background-image: url('http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2');
+      background-size: cover;
+      background-position: right center;
+      background-repeat: no-repeat;
+    }
   }
 
   /* コンテンツエリア */
