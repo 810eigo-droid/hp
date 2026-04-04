@@ -425,9 +425,14 @@
       display: none !important;
     }
 
-    /* SP本文フォントサイズ底上げ（50代以上でも読みやすく） */
-    body {
-      font-size: 1rem; /* 16px基準を明示 */
+    /* -----------------------------------------
+       SP本文フォントサイズ底上げ
+       50代以上でもメガネなしで読めるサイズに
+       html要素のfont-sizeを大きくすることで
+       全remベースの値が連動して拡大する
+       ----------------------------------------- */
+    html {
+      font-size: 17px !important;
     }
 
     .tfd-nav__cta {
@@ -441,10 +446,36 @@
       padding: 14px 48px 14px 24px;
       font-size: 1rem;
     }
+
+    /* -----------------------------------------
+       FV表示切替（SP）
+       WPテーマCSSとの競合を防ぐため
+       マスターCSS側でも !important で制御
+       ----------------------------------------- */
+    .tfd-fv1 {
+      display: none !important;
+      background-image: none !important;
+      min-height: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+    }
+
+    .tfd-fv1__sp-visual {
+      display: block !important;
+      width: 100% !important;
+    }
   }
 
   @media (min-width: 768px) {
     .u-hide-pc {
+      display: none !important;
+    }
+
+    /* FV表示切替（PC）: SP画像を確実に非表示 */
+    .tfd-fv1__sp-visual {
       display: none !important;
     }
   }
