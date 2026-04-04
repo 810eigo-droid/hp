@@ -169,7 +169,7 @@
 
   .tfd-nav__tagline {
     display: block;
-    font-size: clamp(0.78rem, 1.2vw, 0.82rem);
+    font-size: clamp(0.85rem, 1.2vw, 0.88rem);
     font-weight: 400;
     color: var(--tfd-text-light);
     letter-spacing: 0.08em;
@@ -252,7 +252,7 @@
 
   .tfd-heading__sub {
     display: block;
-    font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+    font-size: clamp(1rem, 1.3vw, 1.05rem);
     font-weight: 400;
     color: var(--tfd-text-light);
     margin-top: 0.8rem;
@@ -425,16 +425,21 @@
       display: none !important;
     }
 
+    /* SP本文フォントサイズ底上げ（50代以上でも読みやすく） */
+    body {
+      font-size: 1rem; /* 16px基準を明示 */
+    }
+
     .tfd-nav__cta {
       padding: 8px 16px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
 
     .tfd-btn {
       width: 100%;
       justify-content: center;
       padding: 14px 48px 14px 24px;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
   }
 
