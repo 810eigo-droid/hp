@@ -11,27 +11,62 @@
      [BLOCK-01] FV1枚目 専用CSS
      ========================================= */
 
-  /* --- FVセクション本体 --- */
+  /* --- PC用FV: デフォルトでは背景画像なし --- */
   .tfd-fv1 {
     position: relative;
     width: 100%;
     min-height: 100vh;
     min-height: 100svh;
     background-color: var(--tfd-bg);
+    background-image: none;
     overflow: hidden;
   }
 
-  /* PC以上でのみ背景画像を適用（SP/タブレットでは読み込まない） */
+  /* --- SP用画像FV: デフォルト非表示 --- */
+  .tfd-fv1__sp-visual {
+    display: none;
+  }
+
+  /* =========================================
+     SP (〜767px): 画像FVのみ表示、PC版FV完全非表示
+     ========================================= */
+  @media (max-width: 767px) {
+    .tfd-fv1 {
+      display: none !important;
+      background-image: none !important;
+    }
+
+    .tfd-fv1__sp-visual {
+      display: block;
+      width: 100%;
+    }
+
+    .tfd-fv1__sp-visual img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  /* =========================================
+     PC (768px〜): PC版FV表示＋背景画像適用
+     ========================================= */
   @media (min-width: 768px) {
     .tfd-fv1 {
-      background-image: url('http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2');
+      background-image: url('https://taf.flexenglish.net/wp-content/uploads/2026/04/FV-PCtaf-scaled.webp');
       background-size: cover;
       background-position: right center;
       background-repeat: no-repeat;
     }
+
+    .tfd-fv1__sp-visual {
+      display: none !important;
+    }
   }
 
-  /* コンテンツエリア */
+  /* =========================================
+     コンテンツエリア
+     ========================================= */
   .tfd-fv1__inner {
     position: relative;
     z-index: 2;
@@ -129,34 +164,7 @@
     margin-top: 1rem;
   }
 
-  /* =========================================
-     スマホ専用：画像FV
-     ========================================= */
-  .tfd-fv1__sp-visual {
-    display: none;
-  }
-
-  /* =========================================
-     レスポンシブ: モバイル
-     ========================================= */
-  @media (max-width: 767px) {
-    .tfd-fv1 {
-      display: none !important;
-    }
-
-    .tfd-fv1__sp-visual {
-      display: block;
-      width: 100%;
-    }
-
-    .tfd-fv1__sp-visual img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
-
-  /* タブレット */
+  /* --- タブレット --- */
   @media (min-width: 768px) and (max-width: 1023px) {
     .tfd-fv1__content {
       max-width: 520px;
@@ -164,7 +172,7 @@
   }
 </style>
 
-<!-- スマホ専用：画像FV（PCでは非表示） -->
+<!-- スマホ専用：画像FV（PCではCSS !importantで強制非表示） -->
 <div class="tfd-fv1__sp-visual" role="img" aria-label="ティーチ&ファネルDesign — 初期費用2万円から、自動で売れるWebサイトを構築。ホームページ制作・LP制作・ファネル構築に対応。">
   <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2"
        alt="ティーチ&ファネルDesign — 初期費用2万円から「自動で売れる」Webサイト。HP制作・LP制作・ファネル構築。"
@@ -174,6 +182,7 @@
        decoding="sync">
 </div>
 
+<!-- PC用FV（SPではCSS !importantで強制非表示） -->
 <header class="tfd-fv1" aria-label="ティーチ&ファネルDesign メインビジュアル">
 
   <!-- ナビゲーション -->
