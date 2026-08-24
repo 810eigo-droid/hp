@@ -1,17 +1,30 @@
 <!--
   =============================================
-  [BLOCK-01] ファーストビュー 1枚目
+  [BLOCK-01] ファーストビュー 1枚目（PC専用）
   ティーチ&ファネルDesign
   ※ WordPressの2つ目のカスタムHTMLブロックに貼り付け
+  ※ スマホ用FVは別のブロックで管理してください
   =============================================
 -->
 
 <style>
   /* =========================================
-     [BLOCK-01] FV1枚目 専用CSS
+     [BLOCK-01] FV1枚目 専用CSS（PC専用ブロック）
      ========================================= */
 
-  /* --- PC用FV: デフォルトでは背景画像なし --- */
+  /* --- SP(〜767px)ではこのブロック全体を完全非表示 --- */
+  @media (max-width: 767px) {
+    .tfd-fv1-wrap {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  /* --- PC用FVセクション本体 --- */
   .tfd-fv1 {
     position: relative;
     width: 100%;
@@ -22,35 +35,7 @@
     overflow: hidden;
   }
 
-  /* --- SP用画像FV: デフォルト非表示 --- */
-  .tfd-fv1__sp-visual {
-    display: none;
-  }
-
-  /* =========================================
-     SP (〜767px): 画像FVのみ表示、PC版FV完全非表示
-     ========================================= */
-  @media (max-width: 767px) {
-    .tfd-fv1 {
-      display: none !important;
-      background-image: none !important;
-    }
-
-    .tfd-fv1__sp-visual {
-      display: block;
-      width: 100%;
-    }
-
-    .tfd-fv1__sp-visual img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
-
-  /* =========================================
-     PC (768px〜): PC版FV表示＋背景画像適用
-     ========================================= */
+  /* PCのみ背景画像を適用 */
   @media (min-width: 768px) {
     .tfd-fv1 {
       background-image: url('https://taf.flexenglish.net/wp-content/uploads/2026/04/FV-PCtaf-scaled.webp');
@@ -58,15 +43,9 @@
       background-position: right center;
       background-repeat: no-repeat;
     }
-
-    .tfd-fv1__sp-visual {
-      display: none !important;
-    }
   }
 
-  /* =========================================
-     コンテンツエリア
-     ========================================= */
+  /* コンテンツエリア */
   .tfd-fv1__inner {
     position: relative;
     z-index: 2;
@@ -164,7 +143,7 @@
     margin-top: 1rem;
   }
 
-  /* --- タブレット --- */
+  /* タブレット */
   @media (min-width: 768px) and (max-width: 1023px) {
     .tfd-fv1__content {
       max-width: 520px;
@@ -172,60 +151,59 @@
   }
 </style>
 
-<!-- スマホ専用：画像FV（PCではCSS !importantで強制非表示） -->
-<div class="tfd-fv1__sp-visual" role="img" aria-label="ティーチ&ファネルDesign — 初期費用2万円から、自動で売れるWebサイトを構築。ホームページ制作・LP制作・ファネル構築に対応。">
-  <img src="http://elementor.810eigo.com/wp-content/uploads/2026/03/taffv2.webp?v=2"
-       alt="ティーチ&ファネルDesign — 初期費用2万円から「自動で売れる」Webサイト。HP制作・LP制作・ファネル構築。"
-       width="1080"
-       height="1920"
-       fetchpriority="high"
-       decoding="sync">
-</div>
+<!--
+  .tfd-fv1-wrap: SPで完全非表示にするための外側ラッパー
+  SP用の画像はこのブロックには含まれていません
+  スマホ用FVは別のWordPressブロックで管理してください
+-->
+<div class="tfd-fv1-wrap">
 
-<!-- PC用FV（SPではCSS !importantで強制非表示） -->
-<header class="tfd-fv1" aria-label="ティーチ&ファネルDesign メインビジュアル">
+  <!-- PC用FV -->
+  <header class="tfd-fv1" aria-label="ティーチ&ファネルDesign メインビジュアル">
 
-  <!-- ナビゲーション -->
-  <nav class="tfd-nav" aria-label="メインナビゲーション">
-    <a href="/" class="tfd-nav__brand" aria-label="ティーチ&ファネルDesign トップページ">
-      <div class="tfd-nav__logo-text">
-        Teach<span class="tfd-nav__logo-accent">&amp;</span>Funnel<span class="tfd-nav__logo-accent"> Design</span>
-        <span class="tfd-nav__tagline">ティーチ&amp;ファネルDesign</span>
+    <!-- ナビゲーション -->
+    <nav class="tfd-nav" aria-label="メインナビゲーション">
+      <a href="/" class="tfd-nav__brand" aria-label="ティーチ&ファネルDesign トップページ">
+        <div class="tfd-nav__logo-text">
+          Teach<span class="tfd-nav__logo-accent">&amp;</span>Funnel<span class="tfd-nav__logo-accent"> Design</span>
+          <span class="tfd-nav__tagline">ティーチ&amp;ファネルDesign</span>
+        </div>
+      </a>
+      <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-nav__cta">LINE相談</a>
+    </nav>
+
+    <div class="tfd-fv1__inner">
+      <div class="tfd-fv1__content">
+
+        <!-- サブタイトル -->
+        <p class="tfd-fv1__sub">初期費用2万円～。で作る</p>
+
+        <!-- メインコピー（h1） -->
+        <h1 class="tfd-fv1__title">
+          <span class="tfd-fv1__title-em u-inline-block">「自動で売れる」</span><span class="u-inline-block">Webサイト。</span>
+        </h1>
+
+        <!-- リード文 -->
+        <p class="tfd-fv1__lead">
+          10年以上の実績から導き出した、確かな「売れる導線」設計。<br aria-hidden="true">
+          あなたの事業成長に合わせて、以下の仕組みが柔軟に進化します。
+        </p>
+
+        <!-- サービス一覧 -->
+        <ul class="tfd-fv1__list" aria-label="対応サービス一覧">
+          <li>ホームページ制作</li>
+          <li>ランディングページ制作</li>
+          <li>セールスファネル構築</li>
+        </ul>
+
+        <!-- CTA -->
+        <div class="tfd-fv1__cta">
+          <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-btn" aria-label="LINEで無料相談する">無料相談はこちら</a>
+        </div>
+
       </div>
-    </a>
-    <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-nav__cta">LINE相談</a>
-  </nav>
-
-  <div class="tfd-fv1__inner">
-    <div class="tfd-fv1__content">
-
-      <!-- サブタイトル -->
-      <p class="tfd-fv1__sub">初期費用2万円～。で作る</p>
-
-      <!-- メインコピー（h1: ページ最重要キーワードを含む） -->
-      <h1 class="tfd-fv1__title">
-        <span class="tfd-fv1__title-em u-inline-block">「自動で売れる」</span><span class="u-inline-block">Webサイト。</span>
-      </h1>
-
-      <!-- リード文（SEOキーワード含有） -->
-      <p class="tfd-fv1__lead">
-        10年以上の実績から導き出した、確かな「売れる導線」設計。<br aria-hidden="true">
-        あなたの事業成長に合わせて、以下の仕組みが柔軟に進化します。
-      </p>
-
-      <!-- サービス一覧（構造化＋視認性） -->
-      <ul class="tfd-fv1__list" aria-label="対応サービス一覧">
-        <li>ホームページ制作</li>
-        <li>ランディングページ制作</li>
-        <li>セールスファネル構築</li>
-      </ul>
-
-      <!-- CTA -->
-      <div class="tfd-fv1__cta">
-        <a href="https://lin.ee/pqfXTUJ" target="_blank" rel="noopener" class="tfd-btn" aria-label="LINEで無料相談する">無料相談はこちら</a>
-      </div>
-
     </div>
-  </div>
 
-</header>
+  </header>
+
+</div><!-- /.tfd-fv1-wrap -->

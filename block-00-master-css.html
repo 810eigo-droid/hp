@@ -448,24 +448,21 @@
     }
 
     /* -----------------------------------------
-       FV表示切替（SP）
-       WPテーマCSSとの競合を防ぐため
-       マスターCSS側でも !important で制御
+       FVブロック全体をSPで完全非表示
+       ラッパー(.tfd-fv1-wrap)と要素(.tfd-fv1)の
+       両方を多重ガードし、どのテーマCSSにも勝つ
        ----------------------------------------- */
+    .tfd-fv1-wrap,
     .tfd-fv1 {
       display: none !important;
-      background-image: none !important;
-      min-height: 0 !important;
+      visibility: hidden !important;
       height: 0 !important;
+      min-height: 0 !important;
       overflow: hidden !important;
+      background-image: none !important;
       padding: 0 !important;
       margin: 0 !important;
       border: none !important;
-    }
-
-    .tfd-fv1__sp-visual {
-      display: block !important;
-      width: 100% !important;
     }
   }
 
@@ -474,7 +471,7 @@
       display: none !important;
     }
 
-    /* FV表示切替（PC）: SP画像を確実に非表示 */
+    /* 念のため: PCではSP用visual要素を非表示（現在は未使用） */
     .tfd-fv1__sp-visual {
       display: none !important;
     }
